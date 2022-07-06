@@ -1,3 +1,5 @@
+//Pseudocode for anti-alising FPGA implementation 
+
 module aa(
   logic clk,
   logic reset_n,
