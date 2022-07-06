@@ -13,13 +13,7 @@ module aa(
 
   logic [size-1: 0] avg_frame [size-1:0],
   genvar row, col;
-generate
-for (i = 0; i < 3 ; i = i + 1) begin: 
-    always @(posedge sysclk) begin
-        temp[i] <= 1'b0;
-    end
-end
-endgenerate
+
 
   
   always @(posedge clk or negedge reset_n) begin 
@@ -28,8 +22,8 @@ endgenerate
         col = 1;
     end else begin 
       generate 
-        for (row = 0; row <size-1; row= row+1) begin 
-          for (col = 0; col <size-1; col= col+1) begin 
+        for (row = 0; row < size-1; row = row+1) begin 
+          for (col = 0; col < size-1; col = col+1) begin 
 
               if (frame[row][col] > th && (frame[row+1][col] < th || frame[row-1][col] < th || frame[row][col+1] < th || frame[row][col-1] < th)) begin 
                 avg_frame[row][col] <= (frame[row][col] + frame[row+1][col] + frame[row-1][col] + frame[row][col+1] + frame[row][col-1]) >> 4 //if it is a black pixel neighbours a white pixel
