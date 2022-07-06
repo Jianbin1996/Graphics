@@ -32,7 +32,7 @@ endgenerate
           for (col = 0; col <size-1; col= col+1) begin 
 
               if (frame[row][col] > th && (frame[row+1][col] < th || frame[row-1][col] < th || frame[row][col+1] < th || frame[row][col-1] < th)) begin 
-                avg_frame[row][col] <= (frame[row][col]+frame[row+1][col]+frane[row-1][col]+frame[row][col+1]+frame[row][col-1])>>4 //if it is a black pixel neighbours a white pixel
+                avg_frame[row][col] <= (frame[row][col] + frame[row+1][col] + frame[row-1][col] + frame[row][col+1] + frame[row][col-1]) >> 4 //if it is a black pixel neighbours a white pixel
                 //calculate the avg of the neighbouring pixels and divide by 4, shift right twice is easier/efficient that divide by 5
               end 
             end 
